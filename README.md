@@ -21,7 +21,7 @@ SudBankCore Backend es una solución completa para la generación y validación 
 
 ## 🚀 Inicio Rápido
 
-### 📋 Prerrequisitos
+### 📋 Pre-requisitos
 Ver archivo `REQUIREMENTS.md` para detalles completos.
 
 **Software Requerido:**
