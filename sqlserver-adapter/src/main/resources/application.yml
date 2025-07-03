@@ -1,0 +1,53 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: sqlserver-adapter
+  
+  # Configuración de credenciales para Spring Security
+  security:
+    user:
+      name: admin
+      password: sudbank2025
+  
+  datasource:
+    url: jdbc:sqlserver://192.168.10.7:1433;databaseName=SBESTRUCTURASCONTROLDB;encrypt=false;trustServerCertificate=true;integratedSecurity=false;loginTimeout=30;disableSSLHostnameVerification=true;sslProtocol=TLSv1;encrypt=false;hostNameInCertificate=*;encrypt=false;trustServerCertificate=true;disableSSLHostnameVerification=true
+    username: sa
+    password: ssm98
+    driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+    hikari:
+      maximum-pool-size: 10
+      minimum-idle: 5
+      connection-timeout: 30000
+      connection-test-query: SELECT 1
+  
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    show-sql: false
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.SQLServer2008Dialect
+        format_sql: true
+  
+  flyway:
+    enabled: false
+    baseline-on-migrate: true
+    locations: classpath:db/migration
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics
+  endpoint:
+    health:
+      show-details: always
+
+logging:
+  level:
+    com.sudbank: DEBUG
+    org.springframework.security: DEBUG
+    org.hibernate.SQL: DEBUG
+    org.hibernate.type.descriptor.sql.BasicBinder: TRACE 
