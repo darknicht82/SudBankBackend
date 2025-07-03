@@ -12,7 +12,7 @@ SudBankCore Backend es una solución completa para la generación y validación 
 - **SQL Server Adapter** (Puerto 8080) - Java 8
   - Conecta con SQL Server 2008
   - Maneja la lógica de negocio de reportes
-  - Autenticación básica: `admin:sudbank2025`
+  - Autenticación básica
 
 - **Regulatory Service** (Puerto 8085) - Java 17
   - Servicio de validación y procesamiento
