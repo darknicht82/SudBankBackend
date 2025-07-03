@@ -1,0 +1,26 @@
+server:
+  port: 8085
+
+spring:
+  application:
+    name: regulatory-service
+  flyway:
+    enabled: false
+
+adapter:
+  service:
+    url: http://localhost:8080
+    timeout: 10000
+
+logging:
+  level:
+    com.sudbank: DEBUG
+    root: INFO
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} - %msg%n"
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info

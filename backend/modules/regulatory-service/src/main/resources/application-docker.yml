@@ -1,0 +1,55 @@
+# Configuración específica para Docker
+# Usa el nombre del servicio en lugar de localhost
+
+spring:
+  datasource:
+    url: jdbc:postgresql://postgres:5432/sudbank?sslmode=disable
+    username: ${POSTGRES_USER:postgres}
+    password: ${POSTGRES_PASSWORD:postgres}
+    driver-class-name: org.postgresql.Driver
+    hikari:
+      maximum-pool-size: 10
+      minimum-idle: 5
+      connection-timeout: 30000
+      connection-test-query: SELECT 1
+  
+  jpa:
+    hibernate:
+      ddl-auto: none
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: true
+        default_schema: public
+    show-sql: false
+  
+  # Deshabilitar Eureka temporalmente
+  cloud:
+    discovery:
+      enabled: false
+  
+  # Configuración de seguridad - deshabilitada para desarrollo
+  security:
+    enabled: false
+    basic:
+      enabled: false
+
+# Configuración de Eureka deshabilitada
+eureka:
+  client:
+    enabled: false
+  instance:
+    enabled: false
+
+# Configuración de Actuator - permitir acceso sin autenticación
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics
+      base-path: /actuator
+  endpoint:
+    health:
+      show-details: always
+  security:
+    enabled: false 
